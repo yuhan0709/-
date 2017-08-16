@@ -15,9 +15,11 @@
 		          </h1>
 		css: .important {color:red;}
 			①并且：类选择器可以结合元素选择器来使用
-				eg：p.important{color:red;} 选择器会匹配class属性中包含important的所有P元素，解释为：“其class属性值为important的所有段落”
+				eg：p.important{color:red;} 选择器会匹配class属性中包含important的所有P元素，
+				解释为：“其class属性值为important的所有段落”
 			②多类选择器
-				eg:假设class为important的所有元素都是粗体，而class为warning的所有元素为斜体。class同时包含important和warning的所有元素还有一个银色的背景，就可写作：
+				eg:假设class为important的所有元素都是粗体，而class为warning的所有元素为斜体。
+				class同时包含important和warning的所有元素还有一个银色的背景，就可写作：
 		    在html中：<p class="important"></p> <!--粗体-->
 			      <p class="warning"></p> <!--斜体-->
 			      <p class="important warning"></p> <!--粗体，斜体，银色背景。-->
@@ -38,8 +40,8 @@
 	6、CSS属性选择器
 	        ①你希望把包含标题的元素变为红色，可以写作：
 				在html中：	<p title="hello">hello world</p>
-							<h1 title="w3c school">w3c school</h2>
-                             <h2>web前端</h2>
+					  <h1 title="w3c school">w3c school</h2>
+                                          <h2>web前端</h2>
 				在CSS中：*[title] {color:red;}  //网页中的p和h1均会变成红色
             ②还可以根据多个属性进行选择，只要将属性选择器连接在一起即可。
                 eg: 在html中：<a href=" " title=" "></a>
@@ -79,7 +81,8 @@
 	7、后代选择器
 		如果你希望你只对h1元素中的em元素应用样式：
 			h1 em {color:red;}
-		有关后代选择器：两个元素的层次间隔可以是无限的：例如：入股偶写作yl em,这个语法就会选择从ul元素继承的所有em元素，而不论em的嵌套层有多深。
+		有关后代选择器：两个元素的层次间隔可以是无限的：例如：入股偶写作yl em,这个语法就会选择从ul元素
+		继承的所有em元素，而不论em的嵌套层有多深。
 	8、CSS子元素选择器
 		如果你不希望选择任意后代元素，希望缩小范围。例如：你只希望选择h1元素子元素的strong元素：
 		       h1>strong{color:red;}
@@ -101,7 +104,8 @@
 			只会把第二个和第三个列表项变为粗体，第一个不受影响。
 	    ③结合其他选择器
 			html>body table + ul {margin-top:20px;}
-			这个选择器解释为：选择紧接着table元素后出现的所有兄弟ul元素，该table元素包含在一个body元素中，body元素本身是html元素的子元素。
+			这个选择器解释为：选择紧接着table元素后出现的所有兄弟ul元素，该table元素包含在一个body元素中，
+			body元素本身是html元素的子元素。
 	10、CSS伪类
 		①锚伪类。连接的不同状态都可以不同的方式显示。
 			a:link {...} 未访问的链接
@@ -165,8 +169,8 @@
 		background-position                改变图像在背景中的位置
 		background-attachment              背景关联
 			background-attachment ：scroll（默认值）背景图像会随页面其余部分的滚动而滚动。
-			                                fixed 当页面其余部分滚动时，背景图像不会移动。
-											        inherit  从父元素继承background-attachment属性设置。
+			                        fixed 当页面其余部分滚动时，背景图像不会移动。
+						inherit  从父元素继承background-attachment属性设置。
 	2. CSS文本								
 		①缩进文本：text-indent
 		②水平对齐：text-align:left,right,center,justify(两端对齐)，inherit
@@ -214,5 +218,62 @@
     1、CSS内边距padding:在边框与内容之间的空白区域。
 		   ①padding属性接受长度值和百分比值，但不允许使用负值。
 		   ②padding内边距的百分比数值时相对于其父元素width计算的。
-	  2、css外边距合并
+    2、css外边距合并
          css外边距合并是指，当两个垂直外边距相遇时，它们将形成一个外边距，合并后外边距的高度等于两个发生合并的外边距的高度中较大者。
+## CSS定位
+	CSS有三种基本定位机制：普通流、浮动和绝对定位。
+	 1、position属性：
+		* static:元素框正常完成，块级元素生成一个矩形框，作为文档流的部分。
+		* relative:元素框偏移某个距离。元素仍保持其未定位前的形状，它原本的所占的空间仍保留
+		* absolute:元素框从文档流完全删除，并相对于其包含块定位，包含块可能是文档中的另一元素
+			   或是初始包含块。元素原先在正常文档流中所占空间会关闭，就好像元素不成在一样。
+	        * fixed:元素框的表现类似于将position设置为absolute,不过其包含块本身是视窗本身。
+	2、相对定位
+		如果一个元素进行相对定位，它将出现在它所在的位置上。然后可以设置垂直或水平位置，让这个
+		元素相对于它正常的位置移动。
+	3、绝对定位
+		绝对定位使元素的位置与文档流无关，因此不占据空间，绝对定位的元素的位置相对于已定位的祖
+		先元素，如果没有已定位的祖先元素，那么它的位置相对于最初的包含块。
+		在html中：<div class="a">
+                               <div class="b">
+                               </div>
+                         </div>
+ 		在CSS中：.a {position:absolute;
+				left:100px;
+                          } <!--相对于窗口定位-->
+                     .b {position:absolute;
+                           left:100px;
+			 } <!--相对于已定位的元素a定位--><!--*注：只要A定位，不论是相对还是绝对，b都相对与a定位-->
+	 4、浮动：浮动的框可以向左或向右移动，直到它的边缘碰到包含框或另一个浮动框边缘为止。
+		**浮动框不在文档的普通流中，所以文档的普通流中的块框表现得就像浮动框不存在一样。
+		当你需要让一些图片或者元素并排显示时，浮动是一种很好的方法，但是浮动也会产生很多问题：
+			①：背景无法展示，父级元素高度塌陷
+			②：父级不能撑开，边框不能随内容撑开
+			③: margin padding设置值不能正确显示。
+		**浮动的清除：**
+			1、给父级设置适当的高度，但这个方法要能确定内容的高度。
+			2、在父级结束前，加一个<div class="clear"></div>,并在CSS里 。clear {clear:both;}
+			   在这里，这个clear盒子是在浮动元素之后它撑开了父级。
+			3、父级div设置 overflow:hidden。这个属性相当于让父级紧贴内容。
+			4、使用CSS伪元素：after伪元素，例如：给浮动元素的容器添加一个clearfix的class,然后
+                           在给这个Class用after伪元素方法，在元素末尾添加一个看不见的元素，来清除浮动
+	           	<div class="outer chearfix">                                                                  
+                        	<img src="">                               
+                        	<p></p>                                
+                  	 </div> 
+			
+			
+			.outer{
+				border:1px solid #000000;
+	             	 }
+						 
+			.chearfix:after {	    
+			 	content:" ";
+				 display:block;
+			 	height:0;
+			 	visibility:hidden;
+			 	clear:both;
+			 	zoom:1;/*兼容IE*/
+			  	}
+			 5、把浮动元素的父级元素也设为浮动，但这种有时会影响网页的布局。不建议使用	 
+	
